@@ -17,7 +17,7 @@ const useBookSearch = (query, pageNumber) => {
 
     axios({
       method: "GET",
-      url: "http://openlibrary.org/search.json",
+      url: "https://openlibrary.org/search.json",
       params: { q: query, page: pageNumber },
     })
       .then((res) => {
@@ -28,7 +28,7 @@ const useBookSearch = (query, pageNumber) => {
         });
         setHasMore(res.data.docs.length > 0);
       })
-      .catch((e) => setError(error.message))
+      .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
     // eslint-disable-next-line
   }, [query, pageNumber]);
